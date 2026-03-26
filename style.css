@@ -1,0 +1,274 @@
+@layer font {
+  @font-face {
+    font-family: "DMSans";
+    src: url("./assets/fonts/DMSans-VariableFont_opsz\,wght.ttf");
+  }
+  @font-face {
+    font-family: "DMItalic";
+    src: url("./assets/fonts/DMSans-Italic-VariableFont_opsz\,wght.ttf");
+  }
+}
+@layer variables {
+  :root {
+    /*colors*/
+    --light-purple: hsl(254, 88%, 90%);
+    --dark-purple: hsl(256, 67%, 59%);
+    --bright-yellow: hsl(31, 66%, 93%);
+    --yellow: hsl(39, 100%, 71%);
+    --white: hsl(0, 0%, 100%);
+    --black: hsl(0, 0%, 7%);
+
+    /*font weights*/
+    --fw-400: 400;
+    --fw-500: 500;
+
+    /*font size*/
+    --fs-sm: 1rem;
+
+    --fs-md: 1.5rem;
+    --fs-l: 1.7rem;
+    --fs-xl: 2.6rem;
+    --fs-xxl: 2.8rem;
+  }
+}
+@layer reset {
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-weight: 500;
+  }
+  img {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+  }
+}
+@layer main {
+  body {
+    font-family: "DMSans", sans-serif;
+    line-height: 1.1;
+    background-color: rgb(241, 238, 234);
+    text-wrap: balance;
+    font-size: var(--fs-sm);
+    margin: 24px;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    line-height: 0.9;
+    text-wrap: balance;
+  }
+}
+@layer utilities {
+  .bento-grid > * {
+    background-color: var(--bento-surface-color);
+    color: var(--bento-foreground-color);
+    text-wrap: balance;
+    padding: var(--bento-padding);
+    border-radius: var(--bento-card-border-radius, 0.7rem);
+
+    display: grid;
+    gap: var(--bento-card-gap, 10px);
+    align-content: var(--bento-card-vertical-alignment, start);
+    justify-items: var(--bento-card-horizontal-alignment, start);
+    text-align: var(--bento-card-horizontal-alignment, start);
+    & img {
+      max-width: var(--bento-image-size);
+      margin-bottom: var(--bento-image-margin-bottom);
+    }
+    & span {
+      color: var(--span-heading-color);
+    }
+  }
+}
+@layer styles {
+  .bento-grid > *:nth-child(1) {
+    --bento-surface-color: var(--dark-purple);
+    --bento-foreground-color: var(--white);
+    --bento-padding: 2.2rem;
+    --bento-card-horizontal-alignment: center;
+    --bento-image-size: 60%;
+    grid-area: one;
+    & h1 {
+      font-size: var(--fs-xxl);
+    }
+    & span:first-child {
+      --span-heading-color: var(--yellow);
+    }
+    & span:last-child {
+      font-style: italic;
+    }
+
+    @media (width > 960px) {
+      --bento-image-size: 30%;
+      --bento-card-vertical-alignment: center;
+      --bento-padding: 4rem 0 4rem 0;
+      & img {
+        margin-top: 1rem;
+      }
+      & h1 {
+        font-size: 3.5rem;
+      }
+    }
+  }
+  .bento-grid > *:nth-child(2) {
+    --bento-padding: 1rem;
+    --bento-surface-color: var(--white);
+    overflow: clip;
+    grid-area: two;
+    & img {
+      order: -1;
+      filter: drop-shadow(0 0 1rem rgba(0, 0, 0, 0.3));
+    }
+
+    @media (width > 960px) {
+      font-size: var(--fs-md);
+      --bento-card-gap: 1rem;
+      & img {
+        width: 140%;
+      }
+    }
+  }
+  .bento-grid > *:nth-child(3) {
+    --bento-surface-color: var(--yellow);
+    --bento-padding: 1rem;
+    --bento-image-size: 65%;
+    --bento-image-margin-bottom: -38px;
+    grid-area: three;
+    overflow: clip;
+
+    @media (width > 960px) {
+      --bento-image-size: 100%;
+      --bento-image-margin-bottom: -190px;
+      font-size: var(--fs-md);
+    }
+  }
+  .bento-grid > *:nth-child(4) {
+    --bento-surface-color: var(--light-purple);
+    --bento-padding: 1rem;
+    --bento-card-gap: 20px;
+    --bento-card-horizontal-alignment: center;
+    overflow: clip;
+    grid-area: four;
+
+    @media (width > 960px) {
+      --bento-card-horizontal-alignment: start;
+      --bento-card-vertical-alignment: center;
+      --bento-padding: 2rem;
+      & img {
+        width: 180%;
+      }
+    }
+  }
+  .bento-grid > *:nth-child(5) {
+    --bento-surface-color: var(--dark-purple);
+    --bento-foreground-color: var(--white);
+    --bento-card-horizontal-alignment: center;
+    --bento-image-size: 80%;
+    --bento-padding: 2rem;
+    --bento-card-gap: 1.7rem;
+    grid-area: five;
+    & img {
+      order: -1;
+    }
+
+    @media (width > 960px) {
+      grid-template-columns: 1fr 1fr;
+      --bento-image-size: 100%;
+      --bento-card-horizontal-alignment: start;
+      --bento-card-vertical-alignment: end;
+      --bento-padding: 1rem;
+      & h2 {
+        margin-top: 3rem;
+      }
+      font-size: var(--fs-md);
+    }
+  }
+  .bento-grid > *:nth-child(6) {
+    --bento-padding: 2rem;
+    --bento-surface-color: var(--white);
+    --bento-image-size: 60%;
+    --bento-card-gap: 1rem;
+    grid-area: six;
+    font-size: var(--fs-md);
+    & span {
+      display: block;
+      margin-top: 1rem;
+      font-size: 1rem;
+    }
+
+    @media (width > 960px) {
+      --bento-image-size: 100%;
+      --bento-card-gap: 2.5rem;
+      & h2 {
+        font-size: var(--fs-xxl);
+      }
+    }
+  }
+  .bento-grid > *:nth-child(7) {
+    --bento-surface-color: var(--bright-yellow);
+    --bento-image-size: 60%;
+    --bento-padding: 2rem;
+    grid-area: seven;
+    & span {
+      color: var(--dark-purple);
+      font-style: italic;
+    }
+
+    @media (width > 960px) {
+      --bento-card-vertical-alignment: center;
+      --bento-padding: 2.4rem;
+      --bento-card-gap: 2rem;
+      --bento-image-size: 100%;
+      font-size: var(--fs-md);
+    }
+  }
+  .bento-grid > *:nth-child(8) {
+    --bento-surface-color: var(--yellow);
+    --bento-padding: 1.5rem;
+    grid-area: eight;
+
+    @media (width > 960px) {
+      --bento-card-vertical-alignment: center;
+      --bento-image-size: 100%;
+      font-size: var(--fs-md);
+      --bento-card-gap: 3rem;
+    }
+  }
+}
+@layer layout {
+  .bento-grid {
+    display: grid;
+    gap: 1.5rem;
+    max-inline-size: 1200px;
+    margin-inline: auto;
+    grid-template-areas:
+      "one"
+      "two"
+      "three"
+      "four"
+      "five"
+      "six"
+      "seven"
+      "eight";
+
+    @media (width > 660px) {
+      grid-template-areas:
+        "one one one"
+        "two three four"
+        "five six four"
+        "seven eight four";
+    }
+    @media (width > 960px) {
+      grid-template-areas:
+        "seven one one four"
+        "seven two three four"
+        "eight two three four"
+        "eight six five five";
+    }
+  }
+}
