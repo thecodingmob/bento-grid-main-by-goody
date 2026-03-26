@@ -241,11 +241,25 @@
   }
 }
 @layer layout {
+  @media (width > 660px) {
+    .bento-grid > *:nth-child(1) {
+      --bento-image-size: 30%;
+    }
+  }
+  @media (width < 660px) {
+    .bento-grid > * {
+      --bento-image-size: 80%;
+    }
+    .bento-grid > *:nth-child(1) {
+      --bento-image-size: 50%;
+    }
+  }
   .bento-grid {
     display: grid;
     gap: 1.5rem;
     max-inline-size: 1200px;
     margin-inline: auto;
+    grid-auto-flow: dense;
     grid-template-areas:
       "one"
       "two"
